@@ -1,0 +1,29 @@
+{
+    "name": "pokedex-backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Demonx507/Pokedex-Backend.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Demonx507/Pokedex-Backend/issues"
+    },
+    "homepage": "https://github.com/Demonx507/Pokedex-Backend#readme",
+    "dependencies": {
+        "express": "^5.1.0",
+        "node-fetch": "^3.3.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}

@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 app.get("/pokemon/:id", async (req, res) => {
     const{id} = req.params;
     try{
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon/${id}");
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         if (!response.ok) {
             return res.status(404).json({ error: "Pokémon no encontrado"});
         }
@@ -23,5 +23,5 @@ app.get("/pokemon/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log("Servidor corriendo en http://localhost:${PORT}")
+    console.log(`Servidor corriendo en http://localhost:${PORT}`)
 });
