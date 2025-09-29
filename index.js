@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import fetch from "node-fetch";
 
 const app = express();
@@ -24,4 +24,26 @@ app.get("/pokemon/:id", async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`)
+});
+
+app.get("/pokemons", async (req, res) => {
+    const limit = req.query.limit || 20; 
+    const offset = req.query.offset || 0; 
+    try {
+        const response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+        );
+        const data = await response.json();
+
+    const detailedPokemons = await Promise.all(
+        data.results.map(async (poke) => {
+        const resp = await fetch(poke.url);
+        return await resp.json();
+        })
+    );
+
+    res.json(detailedPokemons);
+    } catch (error) {
+    res.status(500).json({ error: "Error al obtener lista de pokémon" });
+    }
 });
